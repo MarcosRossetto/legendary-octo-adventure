@@ -1,0 +1,16 @@
+quarkus:
+  log:
+    level: INFO
+  hibernate-orm:
+    database:
+      generation: update
+    log:
+      sql: true
+    jdbc:
+      timezone: UTC
+  default-locale: pt-BR
+  locales: en-US,es-ES,fr-FR
+  cache:
+    caffeine:
+      "history-cache":
+        expire-after-write: 15S
