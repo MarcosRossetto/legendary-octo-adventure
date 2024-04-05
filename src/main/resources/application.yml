@@ -1,16 +1,36 @@
 quarkus:
+  devservices:
+    enabled: false
+
   log:
     level: INFO
+
+  datasource:
+    db-kind: postgresql
+    username: postgres
+    password: 12345
+    jdbc: false
+    reactive:
+      url: postgresql://localhost:5432/teste
+
   hibernate-orm:
     database:
-      generation: update
+      generation: none
     log:
       sql: true
-    jdbc:
-      timezone: UTC
-  default-locale: pt-BR
-  locales: en-US,es-ES,fr-FR
+
+  jackson:
+    date-format: "yyyy-MM-dd'T'HH:mm:ss'Z'"
+    time-zone: "UTC"
+
   cache:
     caffeine:
-      "history-cache":
+      "list-all-users-cache":
         expire-after-write: 15S
+      "get-user-cache":
+        expire-after-write: 1M
+        
+  swagger-ui: # Por padrão, não inclui o Swagger UI, a menos que seja sobrescrito por um perfil específico
+    enable: true 
+    always-include: true
+
